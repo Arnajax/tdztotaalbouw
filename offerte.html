@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gratis Offerte Aanvragen | TDZ Totaalbouw Hoorn</title>
+  <meta name="description" content="Vraag gratis en vrijblijvend een offerte aan bij TDZ Totaalbouw in Hoorn. Wij reageren binnen 1 werkdag. Bel 0229-851956.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-hero {
+      padding-top: calc(var(--nav-h) + 5rem);
+      padding-bottom: 4rem;
+      background: var(--bg-deep);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 80% 50%, rgba(224,123,42,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .page-hero__orange-bar {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 5px;
+      background: linear-gradient(to bottom, transparent, var(--accent) 20%, var(--accent) 80%, transparent);
+    }
+    .page-hero__bg-text {
+      position: absolute;
+      right: -1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 12vw, 10rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: rgba(245,242,238,0.022);
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .page-hero__inner { position: relative; z-index: 2; padding-left: calc(1.5rem + 1rem); }
+    .breadcrumb {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .breadcrumb a { color: var(--text-muted); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { color: var(--text-dim); }
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+    .page-hero__title .accent { color: var(--accent); }
+    .page-hero__sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 500px;
+    }
+
+    /* OFFERTE LAYOUT */
+    .offerte-section {
+      padding: 5rem 0 7rem;
+      background: var(--bg-deep);
+      border-top: 1px solid var(--border);
+    }
+    .offerte-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    /* Left side info */
+    .offerte-info__title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.92;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .offerte-info__title .accent { color: var(--accent); }
+    .offerte-info__sub {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+
+    /* USP list */
+    .offerte-usps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+    .offerte-usp {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .offerte-usp__icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(224,123,42,0.12);
+      border: 1px solid var(--border-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--accent);
+    }
+    .offerte-usp__text strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+    .offerte-usp__text span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Direct contact block */
+    .direct-contact {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+    }
+    .direct-contact__label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.75rem;
+    }
+    .direct-contact__phone {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.25rem;
+      transition: color 0.2s;
+    }
+    .direct-contact__phone:hover { color: var(--accent); }
+    .direct-contact__phone-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 1rem;
+    }
+    .direct-contact__divider {
+      height: 1px;
+      background: var(--border);
+      margin: 1rem 0;
+    }
+
+    /* The form */
+    .offerte-form {
+      background: var(--bg-base);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+    }
+    .offerte-form__title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .offerte-form__sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.1rem;
+    }
+    .form-label {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+    .form-label .required {
+      color: var(--accent);
+      margin-left: 2px;
+    }
+    .form-input {
+      background: var(--bg-deep);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius);
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+      width: 100%;
+      -webkit-appearance: none;
+    }
+    .form-input::placeholder { color: var(--text-dim); }
+    .form-input:focus {
+      border-color: var(--accent);
+      background: var(--bg-card);
+    }
+    .form-select {
+      background: var(--bg-deep);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      padding: 0.8rem 1rem;
+      border-radius: var(--radius);
+      outline: none;
+      width: 100%;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .form-select:focus { border-color: var(--accent); }
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+      line-height: 1.6;
+    }
+    .form-submit-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    .form-note {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+    }
+    .form-privacy {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      margin-top: 0.75rem;
+    }
+    /* Success message */
+    .form-success {
+      display: none;
+      background: rgba(42,122,74,0.12);
+      border: 1px solid rgba(42,122,74,0.3);
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .form-success__title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #4caf73;
+      margin-bottom: 0.35rem;
+    }
+    .form-success__sub { font-size: 0.83rem; color: var(--text-muted); }
+
+    @media (max-width: 960px) {
+      .offerte-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .offerte-form { padding: 1.5rem; }
+      .form-submit-row { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-tdz">TDZ</span>
+        <span class="nav__logo-sub">Totaalbouw</span>
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav__menu" id="navMenu">
+        <a href="badkamer.html" class="nav__link">Badkamer</a>
+        <a href="keuken.html" class="nav__link">Keuken</a>
+        <a href="dakkapel.html" class="nav__link">Dakkapel</a>
+        <a href="renovatie.html" class="nav__link">Renovatie</a>
+        <a href="maatwerk.html" class="nav__link">Maatwerk</a>
+        <a href="offerte.html" class="nav__cta">Offerte aanvragen</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero__orange-bar" aria-hidden="true"></div>
+    <div class="page-hero__bg-text" aria-hidden="true">OFFERTE</div>
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="breadcrumb" aria-label="Kruimelpad">
+          <a href="index.html">Home</a>
+          <span>›</span>
+          <span>Offerte aanvragen</span>
+        </nav>
+        <h1 class="page-hero__title">
+          Gratis en<br>
+          <span class="accent">vrijblijvend</span><br>
+          offerte
+        </h1>
+        <p class="page-hero__sub">
+          Vul het formulier in en wij nemen binnen 1 werkdag contact met u op. Geen verplichtingen, geen kleine lettertjes.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="offerte-section">
+    <div class="container">
+      <div class="offerte-grid">
+
+        <!-- Left: info -->
+        <div class="offerte-info">
+          <h2 class="offerte-info__title">Waarom kiezen voor <span class="accent">TDZ?</span></h2>
+          <p class="offerte-info__sub">Meer dan 13 jaar vakmanschap in de regio Hoorn. Wij spreken duidelijke taal en houden ons aan afspraken.</p>
+
+          <div class="offerte-usps">
+            <div class="offerte-usp">
+              <div class="offerte-usp__icon">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <circle cx="9" cy="6" r="3" stroke="currentColor" stroke-width="1.3"/>
+                  <path d="M3 15c0-3 2.7-5 6-5s6 2 6 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="offerte-usp__text">
+                <strong>Één aanspreekpunt</strong>
+                <span>Direct contact met de vakman die uw project uitvoert.</span>
+              </div>
+            </div>
+            <div class="offerte-usp">
+              <div class="offerte-usp__icon">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M15 4.5L7 13l-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="offerte-usp__text">
+                <strong>Afspraak is afspraak</strong>
+                <span>Wij leveren op tijd en doen wat we beloven.</span>
+              </div>
+            </div>
+            <div class="offerte-usp">
+              <div class="offerte-usp__icon">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M9 1.5l1.8 5.5H17l-4.6 3.4 1.8 5.5L9 12.5l-5.2 3.4 1.8-5.5L1 7h6.2L9 1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div class="offerte-usp__text">
+                <strong>13+ jaar ervaring</strong>
+                <span>Bewezen vakmanschap in Noord-Holland.</span>
+              </div>
+            </div>
+            <div class="offerte-usp">
+              <div class="offerte-usp__icon">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <rect x="2" y="5" width="14" height="11" rx="1" stroke="currentColor" stroke-width="1.3"/>
+                  <path d="M6 5V4a3 3 0 016 0v1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div class="offerte-usp__text">
+                <strong>Geen verborgen kosten</strong>
+                <span>Onze offerte is helder en volledig. Geen verrassingen.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="direct-contact">
+            <p class="direct-contact__label">Liever direct bellen?</p>
+            <a href="tel:02298519456" class="direct-contact__phone">0229-851956</a>
+            <span class="direct-contact__phone-sub">Vaste lijn</span>
+            <div class="direct-contact__divider"></div>
+            <a href="tel:0651556629" class="direct-contact__phone">06-5155 6629</a>
+            <span class="direct-contact__phone-sub">Mobiel</span>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="offerte-form">
+          <h2 class="offerte-form__title">Offerte aanvragen</h2>
+          <p class="offerte-form__sub">Vul uw gegevens in. Wij reageren binnen 1 werkdag.</p>
+
+          <form id="offerteForm" action="#" method="post" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="voornaam" class="form-label">Voornaam <span class="required">*</span></label>
+                <input type="text" id="voornaam" name="voornaam" class="form-input" placeholder="Jan" required>
+              </div>
+              <div class="form-group">
+                <label for="achternaam" class="form-label">Achternaam <span class="required">*</span></label>
+                <input type="text" id="achternaam" name="achternaam" class="form-input" placeholder="de Boer" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">E-mailadres <span class="required">*</span></label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="jan@email.nl" required>
+            </div>
+
+            <div class="form-group">
+              <label for="telefoon" class="form-label">Telefoonnummer <span class="required">*</span></label>
+              <input type="tel" id="telefoon" name="telefoon" class="form-input" placeholder="06-12345678" required>
+            </div>
+
+            <div class="form-group">
+              <label for="adres" class="form-label">Adres werk</label>
+              <input type="text" id="adres" name="adres" class="form-input" placeholder="Straatnaam 12, Hoorn">
+            </div>
+
+            <div class="form-group">
+              <label for="dienst" class="form-label">Soort werk <span class="required">*</span></label>
+              <select id="dienst" name="dienst" class="form-select" required>
+                <option value="" disabled selected>Selecteer een dienst...</option>
+                <option value="badkamer">Badkamer renovatie</option>
+                <option value="keuken">Keuken plaatsen / renovatie</option>
+                <option value="dakkapel">Dakkapel</option>
+                <option value="renovatie">Renovatie / verbouwing</option>
+                <option value="maatwerk">Maatwerk</option>
+                <option value="anders">Anders / combinatie</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="omschrijving" class="form-label">Omschrijving project <span class="required">*</span></label>
+              <textarea id="omschrijving" name="omschrijving" class="form-input form-textarea" placeholder="Beschrijf kort wat u wilt laten doen. Hoe meer details, hoe gerichter onze offerte." rows="5" required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="planning" class="form-label">Gewenste startperiode</label>
+              <select id="planning" name="planning" class="form-select">
+                <option value="" disabled selected>Wanneer wilt u starten?</option>
+                <option value="zsm">Zo snel mogelijk</option>
+                <option value="1maand">Binnen 1 maand</option>
+                <option value="3maanden">Binnen 3 maanden</option>
+                <option value="later">Later / oriënterend</option>
+              </select>
+            </div>
+
+            <div class="form-submit-row">
+              <button type="submit" class="btn btn--primary">Verstuur aanvraag</button>
+              <span class="form-note">Gratis · Vrijblijvend · Binnen 1 werkdag reactie</span>
+            </div>
+            <p class="form-privacy">Uw gegevens worden uitsluitend gebruikt voor het verwerken van uw offerteaanvraag.</p>
+          </form>
+
+          <div class="form-success" id="formSuccess">
+            <p class="form-success__title">Aanvraag ontvangen!</p>
+            <p class="form-success__sub">Bedankt voor uw aanvraag. Wij nemen binnen 1 werkdag contact met u op.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <span class="nav__logo-tdz">TDZ</span>
+            <span class="nav__logo-sub">Totaalbouw</span>
+          </a>
+          <p class="footer__tagline">Uw specialist in de bouw</p>
+          <address class="footer__address">Achterom 43<br>1621 KR Hoorn</address>
+        </div>
+        <div class="footer__links">
+          <p class="footer__col-title">Diensten</p>
+          <a href="badkamer.html" class="footer__link">Badkamer</a>
+          <a href="keuken.html" class="footer__link">Keuken</a>
+          <a href="dakkapel.html" class="footer__link">Dakkapel</a>
+          <a href="renovatie.html" class="footer__link">Renovatie</a>
+          <a href="maatwerk.html" class="footer__link">Maatwerk</a>
+        </div>
+        <div class="footer__links">
+          <p class="footer__col-title">Contact</p>
+          <a href="tel:02298519456" class="footer__link">0229-851956</a>
+          <a href="tel:0651556629" class="footer__link">06-5155 6629</a>
+          <a href="offerte.html" class="footer__link footer__link--accent">Gratis offerte →</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; <span id="year"></span> TDZ Totaalbouw. Alle rechten voorbehouden.</p>
+        <p class="footer__kvk">KvK Hoorn · Noord-Holland</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Offerte form handler
+    const offerteForm = document.getElementById('offerteForm');
+    const formSuccess = document.getElementById('formSuccess');
+
+    if (offerteForm) {
+      offerteForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const btn = offerteForm.querySelector('[type="submit"]');
+        const required = offerteForm.querySelectorAll('[required]');
+        let valid = true;
+
+        required.forEach(function (field) {
+          field.style.borderColor = '';
+          if (!field.value.trim()) {
+            field.style.borderColor = '#e05a2a';
+            valid = false;
+          }
+        });
+
+        if (!valid) return;
+
+        btn.disabled = true;
+        btn.textContent = 'Versturen...';
+
+        setTimeout(function () {
+          offerteForm.style.display = 'none';
+          formSuccess.style.display = 'block';
+        }, 800);
+      });
+    }
+  </script>
+</body>
+</html>

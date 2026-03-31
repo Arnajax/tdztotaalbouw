@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keuken Plaatsen & Renovatie | TDZ Totaalbouw Hoorn</title>
+  <meta name="description" content="Keuken laten plaatsen in Hoorn? TDZ Totaalbouw verzorgt de complete plaatsing inclusief loodgieters- en elektrawerk. Gratis offerte.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-hero {
+      padding-top: calc(var(--nav-h) + 5rem);
+      padding-bottom: 5rem;
+      background: var(--bg-deep);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 80% 50%, rgba(224,123,42,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .page-hero__orange-bar {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 5px;
+      background: linear-gradient(to bottom, transparent, var(--accent) 20%, var(--accent) 80%, transparent);
+    }
+    .page-hero__bg-text {
+      position: absolute;
+      right: -1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(5rem, 14vw, 11rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      color: rgba(245,242,238,0.022);
+      letter-spacing: -0.04em;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+    .page-hero__inner { position: relative; z-index: 2; padding-left: calc(1.5rem + 1rem); }
+    .breadcrumb {
+      font-family: var(--font-display);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .breadcrumb a { color: var(--text-muted); transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { color: var(--text-dim); }
+    .page-hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.88;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .page-hero__title .accent { color: var(--accent); }
+    .page-hero__sub {
+      font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 560px;
+      margin-bottom: 2rem;
+    }
+    .content-section { padding: 6rem 0; }
+    .content-section--alt { background: var(--bg-base); }
+    .content-section + .content-section { border-top: 1px solid var(--border); }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .two-col__heading {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.92;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+    .two-col__heading .accent { color: var(--accent); }
+    .two-col__body {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .two-col__visual {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      aspect-ratio: 4/3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .two-col__visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(224,123,42,0.08) 0%, transparent 50%);
+    }
+    .two-col__visual-label {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      position: relative;
+      z-index: 1;
+    }
+    .checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-bottom: 2rem;
+    }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    .checklist li::before {
+      content: '';
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background: var(--accent);
+      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+    .process-step { background: var(--bg-base); padding: 2rem 1.75rem; }
+    .process-step__num {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: rgba(224,123,42,0.12);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.03em;
+    }
+    .process-step__title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin-bottom: 0.6rem;
+    }
+    .process-step__desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+    .cta-band {
+      background: var(--bg-base);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 5rem 0;
+    }
+    .cta-band__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .cta-band__title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.92;
+      color: var(--text);
+    }
+    .cta-band__title .accent { color: var(--accent); }
+
+    /* Keuken types grid */
+    .types-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+    .type-card {
+      background: var(--bg-base);
+      padding: 2rem;
+      position: relative;
+      transition: background 0.25s;
+    }
+    .type-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s var(--ease-out);
+    }
+    .type-card:hover { background: var(--bg-card-hover); }
+    .type-card:hover::before { transform: scaleX(1); }
+    .type-card__title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+    .type-card__desc { font-size: 0.83rem; color: var(--text-muted); line-height: 1.6; }
+
+    @media (max-width: 900px) {
+      .two-col { grid-template-columns: 1fr; gap: 2.5rem; }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .types-grid { grid-template-columns: 1fr; }
+      .cta-band__inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .process-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-tdz">TDZ</span>
+        <span class="nav__logo-sub">Totaalbouw</span>
+      </a>
+      <button class="nav__toggle" id="navToggle" aria-label="Menu openen" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav__menu" id="navMenu">
+        <a href="badkamer.html" class="nav__link">Badkamer</a>
+        <a href="keuken.html" class="nav__link active">Keuken</a>
+        <a href="dakkapel.html" class="nav__link">Dakkapel</a>
+        <a href="renovatie.html" class="nav__link">Renovatie</a>
+        <a href="maatwerk.html" class="nav__link">Maatwerk</a>
+        <a href="offerte.html" class="nav__cta">Offerte aanvragen</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero__orange-bar" aria-hidden="true"></div>
+    <div class="page-hero__bg-text" aria-hidden="true">KEUKEN</div>
+    <div class="container">
+      <div class="page-hero__inner">
+        <nav class="breadcrumb" aria-label="Kruimelpad">
+          <a href="index.html">Home</a>
+          <span>›</span>
+          <span>Keuken</span>
+        </nav>
+        <h1 class="page-hero__title">
+          Keuken<br>
+          <span class="accent">op maat</span><br>
+          geplaatst
+        </h1>
+        <p class="page-hero__sub">
+          Van eenvoudige plaatsing tot een complete keukenverbouwing inclusief loodgieterswerk, elektra en tegelwerk. Alles door één vakman.
+        </p>
+        <a href="offerte.html" class="btn btn--primary">Gratis offerte aanvragen</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <div class="two-col">
+        <div class="two-col__text">
+          <p class="section-label">Onze aanpak</p>
+          <h2 class="two-col__heading">Meer dan alleen <span class="accent">plaatsen</span></h2>
+          <p class="two-col__body">
+            Een keuken plaatsen is meer dan kasten ophangen. TDZ Totaalbouw regelt het volledige traject: van het slopen van de oude situatie tot de aansluiting van alle leidingen en het afmaken van het tegelwerk. Zo hoeft u maar één aannemer te bellen.
+          </p>
+          <ul class="checklist">
+            <li>Sloopwerk en verwijdering oude keuken</li>
+            <li>Loodgieterswerk: water aan- en afvoer</li>
+            <li>Elektrawerk: groepen, stopcontacten, verlichting</li>
+            <li>Plaatsen van (IKEA-)keukens en maatwerk fronten</li>
+            <li>Tegelwerk achterwand en vloer</li>
+            <li>Afzuiging aansluiten en ventilatie</li>
+            <li>Netjes afwerken en opruimen</li>
+          </ul>
+          <a href="offerte.html" class="btn btn--primary">Offerte aanvragen</a>
+        </div>
+        <div class="two-col__visual" aria-label="Keuken voorbeeld">
+          <span class="two-col__visual-label">Foto op aanvraag</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section content-section--alt">
+    <div class="container">
+      <p class="section-label">Wat wij plaatsen</p>
+      <h2 class="section-title">Elk type <span class="accent">keuken</span></h2>
+      <div class="types-grid">
+        <div class="type-card">
+          <h3 class="type-card__title">IKEA & Bouwmarkt</h3>
+          <p class="type-card__desc">U koopt de keuken, wij plaatsen hem vakkundig. Inclusief alle aansluitingen en afwerking. Vaak goedkoper dan u denkt.</p>
+        </div>
+        <div class="type-card">
+          <h3 class="type-card__title">Maatwerk keuken</h3>
+          <p class="type-card__desc">Onregelmatige ruimte of bijzondere wensen? Wij bouwen een keuken die perfect past — tot op de millimeter.</p>
+        </div>
+        <div class="type-card">
+          <h3 class="type-card__title">Complete verbouwing</h3>
+          <p class="type-card__desc">Muren verplaatsen, keuken uitbouwen, open woonkeuken — van tekening tot oplevering.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-label">Werkwijze</p>
+        <h2 class="section-title">Van advies tot <span class="accent">oplevering</span></h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="process-step__num">01</div>
+          <h3 class="process-step__title">Vrijblijvend adviesgesprek</h3>
+          <p class="process-step__desc">Wij komen bij u thuis om de situatie op te meten en uw wensen te bespreken. Geen verplichtingen.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">02</div>
+          <h3 class="process-step__title">Duidelijke offerte</h3>
+          <p class="process-step__desc">Binnen enkele dagen ontvangt u een gespecificeerde offerte. Alles inbegrepen, geen verrassingen.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">03</div>
+          <h3 class="process-step__title">Uitvoering</h3>
+          <p class="process-step__desc">Op de afgesproken startdatum gaan wij aan de slag. Efficiënt, netjes en met minimale overlast.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">04</div>
+          <h3 class="process-step__title">Oplevering</h3>
+          <p class="process-step__desc">Wij leveren uw keuken netjes op en controleren alle aansluitingen samen met u.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-band__inner">
+        <div class="cta-band__text">
+          <p class="section-label">Klaar om te starten</p>
+          <h2 class="cta-band__title">Uw droomkeuken<br><span class="accent">wacht niet langer</span></h2>
+        </div>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
+          <a href="offerte.html" class="btn btn--primary">Gratis offerte</a>
+          <a href="tel:02298519456" class="btn btn--ghost">Bel 0229-851956</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="index.html" class="footer__logo">
+            <span class="nav__logo-tdz">TDZ</span>
+            <span class="nav__logo-sub">Totaalbouw</span>
+          </a>
+          <p class="footer__tagline">Uw specialist in de bouw</p>
+          <address class="footer__address">Achterom 43<br>1621 KR Hoorn</address>
+        </div>
+        <div class="footer__links">
+          <p class="footer__col-title">Diensten</p>
+          <a href="badkamer.html" class="footer__link">Badkamer</a>
+          <a href="keuken.html" class="footer__link">Keuken</a>
+          <a href="dakkapel.html" class="footer__link">Dakkapel</a>
+          <a href="renovatie.html" class="footer__link">Renovatie</a>
+          <a href="maatwerk.html" class="footer__link">Maatwerk</a>
+        </div>
+        <div class="footer__links">
+          <p class="footer__col-title">Contact</p>
+          <a href="tel:02298519456" class="footer__link">0229-851956</a>
+          <a href="tel:0651556629" class="footer__link">06-5155 6629</a>
+          <a href="offerte.html" class="footer__link footer__link--accent">Gratis offerte →</a>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; <span id="year"></span> TDZ Totaalbouw. Alle rechten voorbehouden.</p>
+        <p class="footer__kvk">KvK Hoorn · Noord-Holland</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
